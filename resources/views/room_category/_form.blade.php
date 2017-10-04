@@ -16,8 +16,6 @@
     </div>
 </div>
 
-
-
 <div class="form-group">
     <div class="col-xs-12 col-sm-12">
         {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RoomCategory;
 use Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class RoomCategoryController extends Controller
 {
@@ -48,6 +49,7 @@ class RoomCategoryController extends Controller
 
         $category = new RoomCategory;
         $category->name = $request->name;
+        $category->created_by = Auth::id();
         $category->save();
 
         flash()->success($category->name.' Room Category Successfully Created');
@@ -82,6 +84,7 @@ class RoomCategoryController extends Controller
                         ->withInput();
         }
         $category->name = $request->name;
+        $category->updated_by = Auth::id();
         $category->save();
 
         flash()->success($category->name.' Room Category Successfully Updated');

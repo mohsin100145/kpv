@@ -19,7 +19,7 @@
 	            <div class="panel-body">
 	                <table id="myTable" class="table table-bordered table-striped table-hover">
 	                    <thead>
-	                        <tr>
+	                        <tr class="success">
 	                            <th>SL</th>
 	                            <th>Category Name</th>
 	                            
