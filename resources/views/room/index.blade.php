@@ -14,7 +14,7 @@
 	        </h3>
 	        <div class="panel panel-danger">
 	            <div class="panel-heading">
-	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Room</b></code></h3>
+	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Rooms</b></code></h3>
 	            </div>
 	            <div class="panel-body">
 	                <table id="myTable" class="table table-striped table-bordered table-hover">

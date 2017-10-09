@@ -33,3 +33,9 @@ Route::get('room/create', 'RoomController@create');
 Route::post('room', 'RoomController@store');
 Route::get('room/{id}/edit', 'RoomController@edit');
 Route::put('room/{id}', 'RoomController@update');
+
+Route::get('customer', 'CustomerController@index');
+Route::get('customer/create', 'CustomerController@create');
+Route::post('customer', 'CustomerController@store');
+Route::get('customer/{id}/edit', 'CustomerController@edit');
+Route::put('customer/{id}', 'CustomerController@update');
