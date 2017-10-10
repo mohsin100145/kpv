@@ -41,7 +41,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('age') ? 'has-error' : ''}}">
-    {!! Form::label('age', 'Room Rate', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
+    {!! Form::label('age', 'Age of Customer', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
 	        {!! Form::text('age', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Age of Customer', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
