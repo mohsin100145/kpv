@@ -19,6 +19,7 @@ class CreateRoomReservationsTable extends Migration
             $table->integer('room_id')->unsigned();
             $table->timestamp('entry_at');
             $table->timestamp('exit_at')->nullable();
+            $table->string('remarks')->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('deleted_by')->unsigned()->nullable();

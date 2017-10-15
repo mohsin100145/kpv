@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoomReservation extends Model
 {
-    protected $table = 'room_resrevations';
+    protected $table = 'room_reservations';
 }

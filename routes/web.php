@@ -39,3 +39,9 @@ Route::get('customer/create', 'CustomerController@create');
 Route::post('customer', 'CustomerController@store');
 Route::get('customer/{id}/edit', 'CustomerController@edit');
 Route::put('customer/{id}', 'CustomerController@update');
+
+Route::get('room-reservation', 'RoomReservationController@index');
+Route::get('room-reservation/create', 'RoomReservationController@create');
+Route::post('room-reservation', 'RoomReservationController@store');
+Route::get('room-reservation/{id}/edit', 'RoomReservationController@edit');
+Route::put('room-reservation/{id}', 'RoomReservationController@update');
