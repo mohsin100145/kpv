@@ -17,7 +17,7 @@
 	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Room Reservations</b></code></h3>
 	            </div>
 	            <div class="panel-body">
-	                <table id="myTable" class="table table-striped table-bordered table-hover">
+	                <table id="example" class="table table-striped table-bordered table-hover">
 	                    <thead>
 	                        <tr class="success">
 	                            <th>SL</th>
@@ -55,8 +55,8 @@
 
 @section('script')
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#myTable').DataTable();
-    });
+    $(document).ready(function() {
+    	$('#example').DataTable();
+	} );
 </script>
 @endsection

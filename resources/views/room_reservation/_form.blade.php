@@ -1,5 +1,5 @@
 @if(isset($reservation))
-    {!! Form::model($room, ['url' => "room-reservation/$reservation->id", 'method' => 'put', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($reservation, ['url' => "room-reservation/$reservation->id", 'method' => 'put', 'class' => 'form-horizontal']) !!}
 @else
     {!! Form::open(['url' => 'room-reservation', 'method' => 'post', 'class' => 'form-horizontal']) !!}
 @endif
@@ -27,47 +27,50 @@
     </div>
 </div>
 
-<div class="form-group required">
-    <label for="dtp_input1" class="col-sm-3 control-label">Entry Date & Time</label>
-    <div class="input-group date form_datetime col-sm-9" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+<!-- <div class="form-group required">
+    <label class="col-sm-3 control-label">Entry Date & Time</label>
+    <div class="input-group date form_datetime col-sm-9" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii:ss">
         <input class="form-control" size="16" type="text" value="" readonly>
         <span class="input-group-addon"><span class="fa fa-times"></span></span>
 		<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
     </div>
-</div>
+</div> -->
 
-<div class="required form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-    {!! Form::label('name', 'Room Name', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
+<div class="required form-group {{ $errors->has('entry_at') ? 'has-error' : ''}}">
+    {!! Form::label('entry_at', 'Entry Date & Time', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
-    	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('name', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Room Name', 'autocomplete' => 'off']) !!}
-	        <span class="text-danger">
-			    {{ $errors->first('name') }}
-		    </span>
+    	<div class="input-group date form_datetime col-xs-12 col-sm-12" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss">
+	        {!! Form::text('entry_at', null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+	        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+			<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 		</div>
+		<span class="text-danger">
+			{{ $errors->first('entry_at') }}
+	    </span>
     </div>
 </div>
 
-
-<div class="required form-group {{ $errors->has('rate') ? 'has-error' : ''}}">
-    {!! Form::label('rate', 'Room Rate', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
+<div class="form-group {{ $errors->has('exit_at') ? 'has-error' : ''}}">
+    {!! Form::label('exit_at', 'Exit Date & Time', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
-    	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('rate', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Room Rate', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
-	        <span class="text-danger">
-			    {{ $errors->first('rate') }}
-		    </span>
+    	<div class="input-group date form_datetime col-xs-12 col-sm-12" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss">
+	        {!! Form::text('exit_at', null, ['class' => 'form-control', 'placeholder' => 'Enter Exit Date & Time', 'readonly' => 'readonly']) !!}
+	        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+			<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 		</div>
+		<span class="text-danger">
+		    {{ $errors->first('exit_at') }}
+	    </span>
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
-    {!! Form::label('description', 'Room Description', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
+<div class="form-group {{ $errors->has('remarks') ? 'has-error' : ''}}">
+    {!! Form::label('remarks', 'Remarks', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('description', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Room Description', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('remarks', null, ['class' => 'form-control', 'placeholder' => 'Enter Remarks', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
-			    {{ $errors->first('description') }}
+			    {{ $errors->first('remarks') }}
 		    </span>
 		</div>
     </div>
