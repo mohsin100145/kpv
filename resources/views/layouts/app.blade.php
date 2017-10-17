@@ -15,8 +15,7 @@
     <!-- <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('assets/css/bootstrap-3.3.7.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome-4.7.0.min.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('assets/css/dataTables-1.10.15.min.css') }}" rel="stylesheet"> -->
-    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/dataTables.bootstrap-1.10.16.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     @yield('style')
 </head>
@@ -88,9 +87,8 @@
     <!-- <script src="{{ asset('assets/js/app.js') }}"></script> -->
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-3.3.7.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="{{ asset('assets/js/dataTables-1.10.15.min.js') }}"></script> -->
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/dataTables-1.10.16.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dataTables.bootstrap-1.10.16.min.js') }}"></script>
     @yield('script')
 </body>
 </html>
