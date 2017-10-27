@@ -19,7 +19,7 @@ class RoomReservationController extends Controller
 
     public function index()
     {
-    	$reservations = RoomReservation::get();
+    	$reservations = RoomReservation::OrderBy('id', 'desc')->get();
     	return view('room_reservation.index', compact('reservations'));
     }
 

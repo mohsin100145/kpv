@@ -45,3 +45,9 @@ Route::get('room-reservation/create', 'RoomReservationController@create');
 Route::post('room-reservation', 'RoomReservationController@store');
 Route::get('room-reservation/{id}/edit', 'RoomReservationController@edit');
 Route::put('room-reservation/{id}', 'RoomReservationController@update');
+
+Route::get('payable-by-customer', 'PayableByCustomerController@index');
+Route::get('payable-by-customer/create', 'PayableByCustomerController@create');
+Route::post('payable-by-customer', 'PayableByCustomerController@store');
+Route::get('payable-by-customer/{id}/edit', 'PayableByCustomerController@edit');
+Route::put('payable-by-customer/{id}', 'PayableByCustomerController@update');
