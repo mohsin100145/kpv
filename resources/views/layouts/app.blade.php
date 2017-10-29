@@ -89,6 +89,7 @@
     <script src="{{ asset('assets/js/bootstrap-3.3.7.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables-1.10.16.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.bootstrap-1.10.16.min.js') }}"></script>
+    <script src="{{ asset('assets/js/text-only-number.js') }}"></script>
     @yield('script')
 </body>
 </html>

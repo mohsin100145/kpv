@@ -61,7 +61,7 @@ class RoomController extends Controller
         $room->created_by = Auth::id();
         $room->save();
 
-        flash()->success($room->name.' Room Successfully Created');
+        flash()->success($room->name.' Room Created Successfully');
     	return redirect('room');
     }
 
@@ -104,7 +104,7 @@ class RoomController extends Controller
         $room->updated_by = Auth::id();
         $room->save();
 
-        flash()->success($room->name.' Room Successfully Updated');
+        flash()->success($room->name.' Room Updated Successfully');
     	return redirect('room');
     }
 }

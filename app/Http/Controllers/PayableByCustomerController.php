@@ -29,4 +29,83 @@ class PayableByCustomerController extends Controller
     	//$roomList = Room::pluck('name', 'id');
     	return view('payable_by_customer.create', compact('roomReservationList'));
     }
+
+    public function store(Request $request)
+    {
+    	$input = Input::all();
+	    $rules = [
+	    	'reservation_id' => 'required',
+	    	'day' => 'required|numeric'
+	    ];
+
+	    $messages = [];
+	    
+    	$validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+        	flash()->error('Something Wrong!');
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $payableByCustomer = new PayableByCustomer;
+        $payableByCustomer->reservation_id = $request->reservation_id;
+        $payableByCustomer->day = $request->day;
+        $payableByCustomer->per_day_discount = $request->per_day_discount;
+        $payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
+        $payableByCustomer->overall_discount = $request->overall_discount;
+        $payableByCustomer->vat = $request->vat;
+        $payableByCustomer->other_charge = $request->other_charge;
+        $payableByCustomer->pay_to_hotel = $request->pay_to_hotel;
+        $payableByCustomer->remarks = $request->remarks;
+        $payableByCustomer->created_by = Auth::id();
+        $payableByCustomer->save();
+
+        flash()->success('Room Reservation Created Successfully');
+    	return redirect('payable-by-customer');
+    }
+
+    public function edit($id)
+    {
+    	$payableByCustomer = PayableByCustomer::find($id);
+    	$roomReservationList = RoomReservation::pluck('id', 'id');
+    	return view('payable_by_customer.edit', compact('roomReservationList', 'payableByCustomer'));
+    }
+
+    public function update(Request $request, $id)
+    {
+    	$input = Input::all();
+	    $rules = [
+	    	'reservation_id' => 'required',
+	    	'day' => 'required|numeric'
+	    ];
+
+	    $messages = [];
+	    
+    	$validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+        	flash()->error('Something Wrong!');
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $payableByCustomer = PayableByCustomer::find($id);
+        $payableByCustomer->reservation_id = $request->reservation_id;
+        $payableByCustomer->day = $request->day;
+        $payableByCustomer->per_day_discount = $request->per_day_discount;
+        $payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
+        $payableByCustomer->overall_discount = $request->overall_discount;
+        $payableByCustomer->vat = $request->vat;
+        $payableByCustomer->other_charge = $request->other_charge;
+        $payableByCustomer->pay_to_hotel = $request->pay_to_hotel;
+        $payableByCustomer->remarks = $request->remarks;
+        $payableByCustomer->updated_by = Auth::id();
+        $payableByCustomer->save();
+
+        flash()->success('Room Reservation Updated Successfully');
+    	return redirect('payable-by-customer');
+    }
 }
