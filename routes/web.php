@@ -51,3 +51,9 @@ Route::get('payable-by-customer/create', 'PayableByCustomerController@create');
 Route::post('payable-by-customer', 'PayableByCustomerController@store');
 Route::get('payable-by-customer/{id}/edit', 'PayableByCustomerController@edit');
 Route::put('payable-by-customer/{id}', 'PayableByCustomerController@update');
+
+Route::get('receivable-by-hotel', 'ReceivableByHotelController@index');
+Route::get('receivable-by-hotel/create', 'ReceivableByHotelController@create');
+Route::post('receivable-by-hotel', 'ReceivableByHotelController@store');
+Route::get('receivable-by-hotel/{id}/edit', 'ReceivableByHotelController@edit');
+Route::put('receivable-by-hotel/{id}', 'ReceivableByHotelController@update');

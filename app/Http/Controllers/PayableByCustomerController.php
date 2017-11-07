@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PayableByCustomer;
 use App\Models\RoomReservation;
-//use App\Models\Room;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +61,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->created_by = Auth::id();
         $payableByCustomer->save();
 
-        flash()->success('Room Reservation Created Successfully');
+        flash()->success('Payable by Customer Created Successfully');
     	return redirect('payable-by-customer');
     }
 
@@ -105,7 +104,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->updated_by = Auth::id();
         $payableByCustomer->save();
 
-        flash()->success('Room Reservation Updated Successfully');
+        flash()->success('Payable by Customer Updated Successfully');
     	return redirect('payable-by-customer');
     }
 }
