@@ -12,7 +12,7 @@
 	                <i class="fa fa-plus"></i> Create <code><b>Receivable By Hotel</b></code>
 	            </a>
 	        </h3>
-	        <div class="panel panel-danger">
+	        <div class="panel panel-info">
 	            <div class="panel-heading">
 	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Receivable By Hotel</b></code></h3>
 	            </div>
