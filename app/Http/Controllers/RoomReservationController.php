@@ -107,4 +107,10 @@ class RoomReservationController extends Controller
         flash()->success(' Room Successfully Updated');
     	return redirect('room-reservation');
     }
+
+    public function roomInfoShow(Request $request)
+    {
+        $room = Room::find($request->room_id);
+        return view('room_reservation.room_info', compact('room'));
+    }
 }

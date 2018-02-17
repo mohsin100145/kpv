@@ -19,13 +19,15 @@
     {!! Form::label('room_id', 'Select Room', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::select('room_id', $roomList, null, ['class' => 'form-control', 'placeholder' => 'Select Room']) !!}
+	        {!! Form::select('room_id', $roomList, null, ['class' => 'form-control', 'placeholder' => 'Select Room', 'id' => 'room_id']) !!}
 	        <span class="text-danger">
 	            {{ $errors->first('room_id') }}
 	        </span>
         </div>
     </div>
 </div>
+
+<span id="room_info_show"></span>
 
 <!-- <div class="form-group required">
     <label class="col-sm-3 control-label">Entry Date & Time</label>
@@ -40,7 +42,7 @@
     {!! Form::label('entry_at', 'Entry Date & Time', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="input-group date form_datetime col-xs-12 col-sm-12" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss">
-	        {!! Form::text('entry_at', null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+	        {!! Form::text('entry_at', null, ['class' => 'form-control', 'placeholder' => 'Enter Entry Date & Time', 'readonly' => 'readonly']) !!}
 	        <span class="input-group-addon"><span class="fa fa-times"></span></span>
 			<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 		</div>
@@ -82,3 +84,18 @@
     </div>
 </div>
 {!! Form::close() !!}
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#room_id").change(function(){
+            //alert("The text has been changed.");
+            var roomId = $("#room_id").val();
+            var url = '{{ url("/room-reservation/room-info-show")}}';
+            $.get(url+'?room_id='+roomId, function (data) {
+                $('#room_info_show').html(data);
+            });
+        });
+    });
+</script>
+@endsection

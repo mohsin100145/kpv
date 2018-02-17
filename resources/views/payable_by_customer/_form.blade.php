@@ -7,13 +7,15 @@
     {!! Form::label('reservation_id', 'Select Room Reservation', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::select('reservation_id', $roomReservationList, null, ['class' => 'form-control', 'placeholder' => 'Select Room Reservation']) !!}
+	        {!! Form::select('reservation_id', $roomReservationList, null, ['class' => 'form-control', 'placeholder' => 'Select Room Reservation', 'id' => 'reservation_id']) !!}
 	        <span class="text-danger">
 	            {{ $errors->first('reservation_id') }}
 	        </span>
         </div>
     </div>
 </div>
+
+<span id="reservation_info_show"></span>
 
 <div class="required form-group {{ $errors->has('day') ? 'has-error' : ''}}">
     {!! Form::label('day', 'Number of Day', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
@@ -117,3 +119,18 @@
     </div>
 </div>
 {!! Form::close() !!}
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#reservation_id").change(function(){
+            //alert("The text has been changed.");
+            var reservationId = $("#reservation_id").val();
+            var url = '{{ url("/payable-by-customer/reservation-info-show")}}';
+            $.get(url+'?reservation_id='+reservationId, function (data) {
+                $('#reservation_info_show').html(data);
+            });
+        });
+    });
+</script>
+@endsection

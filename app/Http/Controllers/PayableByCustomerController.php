@@ -107,4 +107,10 @@ class PayableByCustomerController extends Controller
         flash()->success('Payable by Customer Updated Successfully');
     	return redirect('payable-by-customer');
     }
+
+    public function reservationInfoShow(Request $request)
+    {
+        $reservation = RoomReservation::find($request->reservation_id);
+        return view('payable_by_customer.reservation_info', compact('reservation'));
+    }
 }
