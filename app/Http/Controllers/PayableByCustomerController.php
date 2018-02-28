@@ -24,7 +24,7 @@ class PayableByCustomerController extends Controller
 
     public function create()
     {
-    	$roomReservationList = RoomReservation::pluck('id', 'id');
+    	$roomReservationList = RoomReservation::with(['room', 'customer'])->pluck('id', 'id');
     	//$roomList = Room::pluck('name', 'id');
     	return view('payable_by_customer.create', compact('roomReservationList'));
     }
@@ -34,7 +34,12 @@ class PayableByCustomerController extends Controller
     	$input = Input::all();
 	    $rules = [
 	    	'reservation_id' => 'required',
-	    	'day' => 'required|numeric'
+	    	'day' => 'required|numeric',
+            'per_day_discount' => 'required|numeric',
+            'overall_discount' => 'required|numeric',
+            'vat' => 'required|numeric',
+            'other_charge' => 'required|numeric',
+            'pay_to_hotel' => 'required|numeric'
 	    ];
 
 	    $messages = [];
@@ -52,7 +57,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->reservation_id = $request->reservation_id;
         $payableByCustomer->day = $request->day;
         $payableByCustomer->per_day_discount = $request->per_day_discount;
-        $payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
+        //$payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
         $payableByCustomer->overall_discount = $request->overall_discount;
         $payableByCustomer->vat = $request->vat;
         $payableByCustomer->other_charge = $request->other_charge;
@@ -77,7 +82,12 @@ class PayableByCustomerController extends Controller
     	$input = Input::all();
 	    $rules = [
 	    	'reservation_id' => 'required',
-	    	'day' => 'required|numeric'
+            'day' => 'required|numeric',
+            'per_day_discount' => 'required|numeric',
+            'overall_discount' => 'required|numeric',
+            'vat' => 'required|numeric',
+            'other_charge' => 'required|numeric',
+	    	'pay_to_hotel' => 'required|numeric'
 	    ];
 
 	    $messages = [];
@@ -95,7 +105,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->reservation_id = $request->reservation_id;
         $payableByCustomer->day = $request->day;
         $payableByCustomer->per_day_discount = $request->per_day_discount;
-        $payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
+        //$payableByCustomer->per_day_discount_percentage = $request->per_day_discount_percentage;
         $payableByCustomer->overall_discount = $request->overall_discount;
         $payableByCustomer->vat = $request->vat;
         $payableByCustomer->other_charge = $request->other_charge;
@@ -110,7 +120,7 @@ class PayableByCustomerController extends Controller
 
     public function reservationInfoShow(Request $request)
     {
-        $reservation = RoomReservation::find($request->reservation_id);
+        $reservation = RoomReservation::with(['room', 'customer'])->find($request->reservation_id);
         return view('payable_by_customer.reservation_info', compact('reservation'));
     }
 }

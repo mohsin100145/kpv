@@ -35,10 +35,10 @@
 	                    @foreach($rooms as $room)
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
-	                            <td><strong>{{ $room->name }}</strong></td>
-	                            <td><strong>{{ $room->roomCategory->name }}</strong></td>
-	                            <td><strong>{{ $room->rate }}</strong></td>
-	                            <td><strong>{{ $room->description }}</strong></td>
+	                            <td>{{ $room->name }}</td>
+	                            <td>{{ $room->roomCategory->name }}</td>
+	                            <td>{{ $room->rate }}</td>
+	                            <td>{{ $room->description }}</td>
 	                            <td>{!! Html::link("room/$room->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
 	                        </tr>
 	                    @endforeach

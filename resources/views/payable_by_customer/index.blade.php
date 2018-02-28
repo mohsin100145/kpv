@@ -23,7 +23,7 @@
 	                            <th>SL</th>
 	                            <th>reservation_id</th>
 	                            <th>day</th>
-	                            <th>per_day_discount_percentage</th>
+	                            <th>per_day_discount</th>
 	                            <th>overall_discount</th>
 	                            <th>vat</th>
 	                            <th>other_charge</th>
@@ -39,14 +39,14 @@
 	                    @foreach($payableByCustomers as $payable)
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
-	                            <td><strong>{{ $payable->reservation_id }}</strong></td>
-	                            <td><strong>{{ $payable->day }}</strong></td>
-	                            <td><strong>{{ $payable->per_day_discount_percentage }}</strong></td>
-	                            <td><strong>{{ $payable->overall_discount }}</strong></td>
-	                            <td><strong>{{ $payable->vat }}</strong></td>
-	                            <td><strong>{{ $payable->other_charge }}</strong></td>
-	                            <td><strong>{{ $payable->pay_to_hotel }}</strong></td>
-	                            <td><strong>{{ $payable->remarks }}</strong></td>
+	                            <td>{{ $payable->reservation_id }}</td>
+	                            <td>{{ $payable->day }}</td>
+	                            <td>{{ $payable->per_day_discount }}</td>
+	                            <td>{{ $payable->overall_discount }}</td>
+	                            <td>{{ $payable->vat }}</td>
+	                            <td>{{ $payable->other_charge }}</td>
+	                            <td>{{ $payable->pay_to_hotel }}</td>
+	                            <td>{{ $payable->remarks }}</td>
 	                            <td>{!! Html::link("payable-by-customer/$payable->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
 	                        </tr>
 	                    @endforeach

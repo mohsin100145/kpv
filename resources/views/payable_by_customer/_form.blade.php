@@ -21,7 +21,7 @@
     {!! Form::label('day', 'Number of Day', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('day', null, ['class' => 'form-control', 'placeholder' => 'Enter Number of Day', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
+	        {!! Form::text('day', null, ['class' => 'form-control', 'placeholder' => 'Enter Number of Day', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'id' => 'day']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('day') }}
 		    </span>
@@ -29,11 +29,11 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('per_day_discount') ? 'has-error' : ''}}">
+<div class="required form-group {{ $errors->has('per_day_discount') ? 'has-error' : ''}}">
     {!! Form::label('per_day_discount', 'Per Day Discount', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('per_day_discount', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Per Day Discount', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('per_day_discount', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Per Day Discount', 'autocomplete' => 'off', 'id' => 'per_day_discount']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('per_day_discount') }}
 		    </span>
@@ -41,23 +41,23 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('per_day_discount_percentage') ? 'has-error' : ''}}">
+<!-- <div class="form-group {{ $errors->has('per_day_discount_percentage') ? 'has-error' : ''}}">
     {!! Form::label('per_day_discount_percentage', 'Per Day Discount in Percentage', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('per_day_discount_percentage', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Per Day Discount Percentage', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('per_day_discount_percentage', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Per Day Discount in Percentage', 'autocomplete' => 'off', 'id' => 'per_day_discount_percentage']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('per_day_discount_percentage') }}
 		    </span>
 		</div>
     </div>
-</div>
+</div> -->
 
-<div class="form-group {{ $errors->has('overall_discount') ? 'has-error' : ''}}">
+<div class="required form-group {{ $errors->has('overall_discount') ? 'has-error' : ''}}">
     {!! Form::label('overall_discount', 'Overall Discount', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('overall_discount', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Overall Discount', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('overall_discount', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Overall Discount', 'autocomplete' => 'off', 'id' => 'overall_discount']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('overall_discount') }}
 		    </span>
@@ -65,11 +65,11 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('vat') ? 'has-error' : ''}}">
+<div class="required form-group {{ $errors->has('vat') ? 'has-error' : ''}}">
     {!! Form::label('vat', 'Vat', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('vat', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Vat', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('vat', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Vat', 'autocomplete' => 'off', 'id' => 'vat']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('vat') }}
 		    </span>
@@ -77,11 +77,11 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('other_charge') ? 'has-error' : ''}}">
+<div class="required form-group {{ $errors->has('other_charge') ? 'has-error' : ''}}">
     {!! Form::label('other_charge', 'Other Charge', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('other_charge', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Other Charge', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('other_charge', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Other Charge', 'autocomplete' => 'off', 'id' => 'other_charge']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('other_charge') }}
 		    </span>
@@ -89,11 +89,11 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('pay_to_hotel') ? 'has-error' : ''}}">
+<div class="required form-group {{ $errors->has('pay_to_hotel') ? 'has-error' : ''}}">
     {!! Form::label('pay_to_hotel', 'Pay to Hotel', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('pay_to_hotel', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Pay to Hotel', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('pay_to_hotel', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Pay to Hotel', 'autocomplete' => 'off', 'id' => 'pay_to_hotel']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('pay_to_hotel') }}
 		    </span>
@@ -132,5 +132,148 @@
             });
         });
     });
+
+    $(document).ready(function(){
+	    $(document).on('keyup', '#day', function(){
+	    	var perDayDiscount  = parseFloat($('#per_day_discount').val(0));
+	    	var overallDiscount  = parseFloat($('#overall_discount').val(0));
+	    	var vat  = parseFloat($('#vat').val(0));
+	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+	        var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+	        var roomRate  = parseFloat(roomRateText);
+	        var totalRate = day * roomRate;
+	        $('#pay_to_hotel').val(totalRate);
+	    });
+	});
+
+    $(document).ready(function(){
+    	$(document).on('keyup', '#per_day_discount', function(){
+    		var overallDiscount  = parseFloat($('#overall_discount').val(0));
+	    	var vat  = parseFloat($('#vat').val(0));
+	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+    		var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+    		var roomRate  = parseFloat(roomRateText);
+    		var totalRate = day * roomRate;
+    		var perDayDiscount  = parseFloat($('#per_day_discount').val());
+    		var dayDiscount = day * perDayDiscount;
+	        $('#pay_to_hotel').val(totalRate - dayDiscount);
+	    });
+	});
+
+	$(document).ready(function(){
+    	$(document).on('keyup', '#overall_discount', function(){
+    		var vat  = parseFloat($('#vat').val(0));
+	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+    		var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+    		var roomRate  = parseFloat(roomRateText);
+    		var totalRate = day * roomRate;
+    		var perDayDiscount  = parseFloat($('#per_day_discount').val());
+    		var overallDiscount  = parseFloat($('#overall_discount').val());
+    		var dayDiscount = day * perDayDiscount;
+	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount);
+	    });
+	});
+
+	$(document).ready(function(){
+    	$(document).on('keyup', '#vat', function(){
+    		var otherCharge  = parseFloat($('#other_charge').val(0));
+    		var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+    		var roomRate  = parseFloat(roomRateText);
+    		var totalRate = day * roomRate;
+    		var perDayDiscount  = parseFloat($('#per_day_discount').val());
+    		var overallDiscount  = parseFloat($('#overall_discount').val());
+    		var vat  = parseFloat($('#vat').val());
+    		var dayDiscount = day * perDayDiscount;
+	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat);
+	    });
+	});
+
+	$(document).ready(function(){
+    	$(document).on('keyup', '#other_charge', function(){
+    		var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+    		var roomRate  = parseFloat(roomRateText);
+    		var totalRate = day * roomRate;
+    		var perDayDiscount  = parseFloat($('#per_day_discount').val());
+    		var overallDiscount  = parseFloat($('#overall_discount').val());
+    		var vat  = parseFloat($('#vat').val());
+    		var otherCharge  = parseFloat($('#other_charge').val());
+    		var dayDiscount = day * perDayDiscount;
+	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge);
+	    });
+	});
+
+
+//wrong
+
+	// $(document).ready(function(){
+	// 	$('#day, #per_day_discount, #overall_discount, #vat, #other_charge').keyup(function(){ 
+	// 		var day  = parseFloat($('#day').val());
+	//         var roomRateText  = $('#rome_rate').text();
+ //    		var roomRate  = parseFloat(roomRateText);
+ //    		var totalRate = day * roomRate;
+ //    		var perDayDiscount  = parseFloat($('#per_day_discount').val(0));
+ //    		console.log(perDayDiscount);
+ //    		var overallDiscount  = parseFloat($('#overall_discount').val(0));
+ //    		var vat  = parseFloat($('#vat').val(0));
+ //    		var otherCharge  = parseFloat($('#other_charge').val(0));
+ //    		console.log(overallDiscount);
+ //    		console.log('=='+totalRate);
+ //    		var dayDiscount = day * perDayDiscount;
+	//         $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge);
+	// 	});
+	// });
+
+// $(function() {
+//     $(document).on('keyup', '#food_allowance', function() {
+//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val(0));
+//         var medicalAllowance  = parseFloat($('#medical_allowance').val(0));
+//         var salary  = parseFloat($('#salary').val());
+//         var basicSalary  = parseFloat($('#basic_salary').val());
+//         var foodAllowance  = parseFloat($('#food_allowance').val());
+//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance));
+//         if(homeAllowanceCal > 0) {
+//             parseFloat($('#home_allowance').val(homeAllowanceCal));
+//         } else {
+//             parseFloat($('#home_allowance').val(null));
+//         }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('keyup', '#medical_allowance', function() {
+//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val(0));
+//         var salary  = parseFloat($('#salary').val());
+//         var basicSalary  = parseFloat($('#basic_salary').val());
+//         var foodAllowance  = parseFloat($('#food_allowance').val());
+//         var medicalAllowance  = parseFloat($('#medical_allowance').val());
+//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance + medicalAllowance));
+//         if(homeAllowanceCal > 0) {
+//             parseFloat($('#home_allowance').val(homeAllowanceCal));
+//         } else {
+//             parseFloat($('#home_allowance').val(null));
+//         }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('keyup', '#conveyance_allowance', function() {
+//         var salary  = parseFloat($('#salary').val());
+//         var basicSalary  = parseFloat($('#basic_salary').val());
+//         var foodAllowance  = parseFloat($('#food_allowance').val());
+//         var medicalAllowance  = parseFloat($('#medical_allowance').val());
+//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val());
+//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance + medicalAllowance + conveyanceAllowance));
+//         if(homeAllowanceCal > 0) {
+//             parseFloat($('#home_allowance').val(homeAllowanceCal));
+//         } else {
+//             parseFloat($('#home_allowance').val(null));
+//         }
+//     });
+// });
 </script>
 @endsection

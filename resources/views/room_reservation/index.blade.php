@@ -22,7 +22,9 @@
 	                        <tr class="success">
 	                            <th>SL</th>
 	                            <th>Cusromer Id</th>
-	                            <th>Room Id</th>
+	                            <th>Cusromer Id</th>
+	                            <th>Room</th>
+	                            <th>Per Day Rate</th>
 	                            <th>Entry At</th>
 	                            <th>Exit At</th>
 	                            <th>Remarks</th>
@@ -36,11 +38,13 @@
 	                    @foreach($reservations as $reservation)
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
-	                            <td><strong>{{ $reservation->customer_id }}</strong></td>
-	                            <td><strong>{{ $reservation->room_id }}</strong></td>
-	                            <td><strong>{{ $reservation->entry_at }}</strong></td>
-	                            <td><strong>{{ $reservation->exit_at }}</strong></td>
-	                            <td><strong>{{ $reservation->remarks }}</strong></td>
+	                            <td>{{ $reservation->customer_id }}</td>
+	                            <td>{{ $reservation->customer->name }}</td>
+	                            <td>{{ $reservation->room->name }}</td>
+	                            <td>{{ $reservation->room->rate }}</td>
+	                            <td>{{ $reservation->entry_at }}</td>
+	                            <td>{{ $reservation->exit_at }}</td>
+	                            <td>{{ $reservation->remarks }}</td>
 	                            <td>{!! Html::link("room-reservation/$reservation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
 	                        </tr>
 	                    @endforeach
