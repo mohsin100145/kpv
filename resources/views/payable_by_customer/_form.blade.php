@@ -101,6 +101,18 @@
     </div>
 </div>
 
+<div class="required form-group {{ $errors->has('due') ? 'has-error' : ''}}">
+    {!! Form::label('due', 'Due', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
+    <div class="col-xs-9 col-sm-9">
+    	<div class="col-xs-12 col-sm-12">
+	        {!! Form::text('due', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Due', 'autocomplete' => 'off', 'id' => 'due', 'readonly' => 'readonly']) !!}
+	        <span class="text-danger">
+			    {{ $errors->first('due') }}
+		    </span>
+		</div>
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('remarks') ? 'has-error' : ''}}">
     {!! Form::label('remarks', 'Remarks', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
@@ -139,11 +151,12 @@
 	    	var overallDiscount  = parseFloat($('#overall_discount').val(0));
 	    	var vat  = parseFloat($('#vat').val(0));
 	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+	    	var payToHotel  = parseFloat($('#pay_to_hotel').val(0));
 	        var day  = parseFloat($('#day').val());
 	        var roomRateText  = $('#rome_rate').text();
 	        var roomRate  = parseFloat(roomRateText);
 	        var totalRate = day * roomRate;
-	        $('#pay_to_hotel').val(totalRate);
+	        $('#due').val(totalRate);
 	    });
 	});
 
@@ -152,13 +165,20 @@
     		var overallDiscount  = parseFloat($('#overall_discount').val(0));
 	    	var vat  = parseFloat($('#vat').val(0));
 	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+	    	var payToHotel  = parseFloat($('#pay_to_hotel').val(0));
     		var day  = parseFloat($('#day').val());
 	        var roomRateText  = $('#rome_rate').text();
     		var roomRate  = parseFloat(roomRateText);
     		var totalRate = day * roomRate;
     		var perDayDiscount  = parseFloat($('#per_day_discount').val());
     		var dayDiscount = day * perDayDiscount;
-	        $('#pay_to_hotel').val(totalRate - dayDiscount);
+    		if (dayDiscount > totalRate ) 
+    		{
+    			perDayDiscount = parseInt(perDayDiscount / 10);
+    			$('#per_day_discount').val(perDayDiscount);
+    			dayDiscount = day * perDayDiscount;
+    		}
+	        $('#due').val(totalRate - dayDiscount);
 	    });
 	});
 
@@ -166,6 +186,7 @@
     	$(document).on('keyup', '#overall_discount', function(){
     		var vat  = parseFloat($('#vat').val(0));
 	    	var otherCharge  = parseFloat($('#other_charge').val(0));
+	    	var payToHotel  = parseFloat($('#pay_to_hotel').val(0));
     		var day  = parseFloat($('#day').val());
 	        var roomRateText  = $('#rome_rate').text();
     		var roomRate  = parseFloat(roomRateText);
@@ -173,13 +194,19 @@
     		var perDayDiscount  = parseFloat($('#per_day_discount').val());
     		var overallDiscount  = parseFloat($('#overall_discount').val());
     		var dayDiscount = day * perDayDiscount;
-	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount);
+    		if ((dayDiscount + overallDiscount) > totalRate ) 
+    		{
+    			overallDiscount = parseInt(overallDiscount / 10);
+    			$('#overall_discount').val(overallDiscount);
+    		}
+	        $('#due').val(totalRate - dayDiscount - overallDiscount);
 	    });
 	});
 
 	$(document).ready(function(){
     	$(document).on('keyup', '#vat', function(){
     		var otherCharge  = parseFloat($('#other_charge').val(0));
+    		var payToHotel  = parseFloat($('#pay_to_hotel').val(0));
     		var day  = parseFloat($('#day').val());
 	        var roomRateText  = $('#rome_rate').text();
     		var roomRate  = parseFloat(roomRateText);
@@ -188,12 +215,13 @@
     		var overallDiscount  = parseFloat($('#overall_discount').val());
     		var vat  = parseFloat($('#vat').val());
     		var dayDiscount = day * perDayDiscount;
-	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat);
+	        $('#due').val(totalRate - dayDiscount - overallDiscount + vat);
 	    });
 	});
 
 	$(document).ready(function(){
     	$(document).on('keyup', '#other_charge', function(){
+    		var payToHotel  = parseFloat($('#pay_to_hotel').val(0));
     		var day  = parseFloat($('#day').val());
 	        var roomRateText  = $('#rome_rate').text();
     		var roomRate  = parseFloat(roomRateText);
@@ -203,77 +231,29 @@
     		var vat  = parseFloat($('#vat').val());
     		var otherCharge  = parseFloat($('#other_charge').val());
     		var dayDiscount = day * perDayDiscount;
-	        $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge);
+	        $('#due').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge);
 	    });
 	});
 
-
-//wrong
-
-	// $(document).ready(function(){
-	// 	$('#day, #per_day_discount, #overall_discount, #vat, #other_charge').keyup(function(){ 
-	// 		var day  = parseFloat($('#day').val());
-	//         var roomRateText  = $('#rome_rate').text();
- //    		var roomRate  = parseFloat(roomRateText);
- //    		var totalRate = day * roomRate;
- //    		var perDayDiscount  = parseFloat($('#per_day_discount').val(0));
- //    		console.log(perDayDiscount);
- //    		var overallDiscount  = parseFloat($('#overall_discount').val(0));
- //    		var vat  = parseFloat($('#vat').val(0));
- //    		var otherCharge  = parseFloat($('#other_charge').val(0));
- //    		console.log(overallDiscount);
- //    		console.log('=='+totalRate);
- //    		var dayDiscount = day * perDayDiscount;
-	//         $('#pay_to_hotel').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge);
-	// 	});
-	// });
-
-// $(function() {
-//     $(document).on('keyup', '#food_allowance', function() {
-//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val(0));
-//         var medicalAllowance  = parseFloat($('#medical_allowance').val(0));
-//         var salary  = parseFloat($('#salary').val());
-//         var basicSalary  = parseFloat($('#basic_salary').val());
-//         var foodAllowance  = parseFloat($('#food_allowance').val());
-//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance));
-//         if(homeAllowanceCal > 0) {
-//             parseFloat($('#home_allowance').val(homeAllowanceCal));
-//         } else {
-//             parseFloat($('#home_allowance').val(null));
-//         }
-//     });
-// });
-
-// $(function() {
-//     $(document).on('keyup', '#medical_allowance', function() {
-//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val(0));
-//         var salary  = parseFloat($('#salary').val());
-//         var basicSalary  = parseFloat($('#basic_salary').val());
-//         var foodAllowance  = parseFloat($('#food_allowance').val());
-//         var medicalAllowance  = parseFloat($('#medical_allowance').val());
-//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance + medicalAllowance));
-//         if(homeAllowanceCal > 0) {
-//             parseFloat($('#home_allowance').val(homeAllowanceCal));
-//         } else {
-//             parseFloat($('#home_allowance').val(null));
-//         }
-//     });
-// });
-
-// $(function() {
-//     $(document).on('keyup', '#conveyance_allowance', function() {
-//         var salary  = parseFloat($('#salary').val());
-//         var basicSalary  = parseFloat($('#basic_salary').val());
-//         var foodAllowance  = parseFloat($('#food_allowance').val());
-//         var medicalAllowance  = parseFloat($('#medical_allowance').val());
-//         var conveyanceAllowance  = parseFloat($('#conveyance_allowance').val());
-//         var homeAllowanceCal = parseFloat(salary - (basicSalary + foodAllowance + medicalAllowance + conveyanceAllowance));
-//         if(homeAllowanceCal > 0) {
-//             parseFloat($('#home_allowance').val(homeAllowanceCal));
-//         } else {
-//             parseFloat($('#home_allowance').val(null));
-//         }
-//     });
-// });
+	$(document).ready(function(){
+    	$(document).on('keyup', '#pay_to_hotel', function(){
+    		var day  = parseFloat($('#day').val());
+	        var roomRateText  = $('#rome_rate').text();
+    		var roomRate  = parseFloat(roomRateText);
+    		var totalRate = day * roomRate;
+    		var perDayDiscount  = parseFloat($('#per_day_discount').val());
+    		var overallDiscount  = parseFloat($('#overall_discount').val());
+    		var vat  = parseFloat($('#vat').val());
+    		var otherCharge  = parseFloat($('#other_charge').val());
+    		var payToHotel  = parseFloat($('#pay_to_hotel').val());
+    		var dayDiscount = day * perDayDiscount;
+    		if ((payToHotel + dayDiscount + overallDiscount - vat - otherCharge) > totalRate ) 
+    		{
+    			payToHotel = parseInt(payToHotel / 10);
+    			$('#pay_to_hotel').val(payToHotel);
+    		}
+	        $('#due').val(totalRate - dayDiscount - overallDiscount + vat + otherCharge - payToHotel);
+	    });
+	});
 </script>
 @endsection

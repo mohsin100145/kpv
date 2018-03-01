@@ -31,6 +31,12 @@ class PayableByCustomerController extends Controller
 
     public function store(Request $request)
     {
+        //return $request->all();
+        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
+            flash()->error('Wrong Input, Please Check!');
+            return redirect()->back()->withInput();
+        }
+
     	$input = Input::all();
 	    $rules = [
 	    	'reservation_id' => 'required',
@@ -39,7 +45,8 @@ class PayableByCustomerController extends Controller
             'overall_discount' => 'required|numeric',
             'vat' => 'required|numeric',
             'other_charge' => 'required|numeric',
-            'pay_to_hotel' => 'required|numeric'
+            'pay_to_hotel' => 'required|numeric',
+            'due' => 'required|numeric'
 	    ];
 
 	    $messages = [];
@@ -62,6 +69,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->vat = $request->vat;
         $payableByCustomer->other_charge = $request->other_charge;
         $payableByCustomer->pay_to_hotel = $request->pay_to_hotel;
+        $payableByCustomer->due = $request->due;
         $payableByCustomer->remarks = $request->remarks;
         $payableByCustomer->created_by = Auth::id();
         $payableByCustomer->save();
@@ -79,6 +87,11 @@ class PayableByCustomerController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
+            flash()->error('Wrong Input, Please Check!');
+            return redirect()->back()->withInput();
+        }
+        
     	$input = Input::all();
 	    $rules = [
 	    	'reservation_id' => 'required',
@@ -87,7 +100,8 @@ class PayableByCustomerController extends Controller
             'overall_discount' => 'required|numeric',
             'vat' => 'required|numeric',
             'other_charge' => 'required|numeric',
-	    	'pay_to_hotel' => 'required|numeric'
+            'pay_to_hotel' => 'required|numeric',
+	    	'due' => 'required|numeric'
 	    ];
 
 	    $messages = [];
@@ -110,6 +124,7 @@ class PayableByCustomerController extends Controller
         $payableByCustomer->vat = $request->vat;
         $payableByCustomer->other_charge = $request->other_charge;
         $payableByCustomer->pay_to_hotel = $request->pay_to_hotel;
+        $payableByCustomer->due = $request->due;
         $payableByCustomer->remarks = $request->remarks;
         $payableByCustomer->updated_by = Auth::id();
         $payableByCustomer->save();

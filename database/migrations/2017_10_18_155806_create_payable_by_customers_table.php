@@ -23,6 +23,7 @@ class CreatePayableByCustomersTable extends Migration
             $table->float('vat')->nullable();
             $table->float('other_charge')->nullable();
             $table->float('pay_to_hotel');
+            $table->float('due')->nullable();
             $table->string('remarks')->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
