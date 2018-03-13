@@ -18,13 +18,17 @@ class PayableByCustomerController extends Controller
 
     public function index()
     {
-    	$payableByCustomers = PayableByCustomer::OrderBy('id', 'desc')->get();
+    	$payableByCustomers = PayableByCustomer::with(['reservation', 'reservation.customer'])->OrderBy('id', 'desc')->get();
     	return view('payable_by_customer.index', compact('payableByCustomers'));
     }
 
     public function create()
     {
-    	$roomReservationList = RoomReservation::with(['room', 'customer'])->pluck('id', 'id');
+        //$roomReservationList = RoomReservation::pluck('id', 'id');
+    	$roomReservations = RoomReservation::with(['room', 'customer'])->get();
+        foreach ($roomReservations as  $roomReservation) {
+            $roomReservationList[$roomReservation->id] = $roomReservation->customer->mobile_no . ' ' .$roomReservation->customer->name . ' ' .$roomReservation->id . ' ' .$roomReservation->room->name . ' ' .$roomReservation->room->rate . ' (Mobile Name ID Room Rate)';
+        }
     	//$roomList = Room::pluck('name', 'id');
     	return view('payable_by_customer.create', compact('roomReservationList'));
     }

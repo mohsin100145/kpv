@@ -22,6 +22,18 @@
 @endsection
 
 @section('script')
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $("#room_id").change(function(){
+	            //alert("The text has been changed.");
+	            var roomId = $("#room_id").val();
+	            var url = '{{ url("/room-reservation/room-info-show")}}';
+	            $.get(url+'?room_id='+roomId, function (data) {
+	                $('#room_info_show').html(data);
+	            });
+	        });
+	    });
+	</script>
 	<script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap-datetimepicker.fr.js') }}"></script>
 	<script type="text/javascript">

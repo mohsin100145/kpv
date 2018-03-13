@@ -7,7 +7,7 @@
     {!! Form::label('reservation_id', 'Select Room Reservation', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::select('reservation_id', $roomReservationList, null, ['class' => 'form-control', 'placeholder' => 'Select Room Reservation', 'id' => 'reservation_id']) !!}
+	        {!! Form::select('reservation_id', $roomReservationList, null, ['class' => 'form-control js-example-basic-single', 'placeholder' => 'Select Room Reservation', 'id' => 'reservation_id']) !!}
 	        <span class="text-danger">
 	            {{ $errors->first('reservation_id') }}
 	        </span>
@@ -256,4 +256,14 @@
 	    });
 	});
 </script>
+<script src="{{ asset('assets/js/select2-4.0.6.min.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$('.js-example-basic-single').select2();
+	});
+</script>
+@endsection
+
+@section('style')
+	<link href="{{ asset('assets/css/select2-4.0.6.min.css') }}" rel="stylesheet">
 @endsection
