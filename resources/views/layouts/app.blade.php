@@ -52,6 +52,24 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li {{ ( Request::is('room-category') || Request::is('room-category/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('room-category') }}">Room Category</a>
+                            </li>
+                            <li {{ ( Request::is('room') || Request::is('room/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('room') }}">Room</a>
+                            </li>
+                            <li {{ ( Request::is('customer') || Request::is('customer/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('customer') }}">Customer</a>
+                            </li>
+                            <li {{ ( Request::is('room-reservation') || Request::is('room-reservation/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('room-reservation') }}">Room Reservation</a>
+                            </li>
+                            <li {{ ( Request::is('payable-by-customer') || Request::is('payable-by-customer/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('payable-by-customer') }}">Payable By Customer</a>
+                            </li>
+                            <li {{ ( Request::is('user') || Request::is('user/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('user') }}">User</a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

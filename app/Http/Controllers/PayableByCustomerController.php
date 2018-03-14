@@ -85,7 +85,11 @@ class PayableByCustomerController extends Controller
     public function edit($id)
     {
     	$payableByCustomer = PayableByCustomer::find($id);
-    	$roomReservationList = RoomReservation::pluck('id', 'id');
+    	//$roomReservationList = RoomReservation::pluck('id', 'id');
+        $roomReservations = RoomReservation::with(['room', 'customer'])->get();
+        foreach ($roomReservations as  $roomReservation) {
+            $roomReservationList[$roomReservation->id] = $roomReservation->customer->mobile_no . ' ' .$roomReservation->customer->name . ' ' .$roomReservation->id . ' ' .$roomReservation->room->name . ' ' .$roomReservation->room->rate . ' (Mobile Name ID Room Rate)';
+        }
     	return view('payable_by_customer.edit', compact('roomReservationList', 'payableByCustomer'));
     }
 

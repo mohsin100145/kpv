@@ -17,33 +17,35 @@
 	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Rooms</b></code></h3>
 	            </div>
 	            <div class="panel-body">
-	                <table id="myTable" class="table table-striped table-bordered table-hover">
-	                    <thead>
-	                        <tr class="success">
-	                            <th>SL</th>
-	                            <th>Room Name</th>
-	                            <th>Category Name</th>
-	                            <th>Rate</th>
-	                            <th>Description</th>
-	                            <th>Edit</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                    <?php
-	                        $i = 0;
-	                    ?>
-	                    @foreach($rooms as $room)
-	                        <tr>
-	                            <td>{{ ++$i }}</td>
-	                            <td>{{ $room->name }}</td>
-	                            <td>{{ $room->roomCategory->name }}</td>
-	                            <td>{{ $room->rate }}</td>
-	                            <td>{{ $room->description }}</td>
-	                            <td>{!! Html::link("room/$room->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
-	                        </tr>
-	                    @endforeach
-	                    </tbody>
-	                </table>
+	            	<div class="table-responsive">
+		                <table id="myTable" class="table table-striped table-bordered table-hover">
+		                    <thead>
+		                        <tr class="success">
+		                            <th>SL</th>
+		                            <th>Room Name</th>
+		                            <th>Category Name</th>
+		                            <th>Rate</th>
+		                            <th>Description</th>
+		                            <th>Edit</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    <?php
+		                        $i = 0;
+		                    ?>
+		                    @foreach($rooms as $room)
+		                        <tr>
+		                            <td>{{ ++$i }}</td>
+		                            <td>{{ $room->name }}</td>
+		                            <td>{{ $room->roomCategory->name }}</td>
+		                            <td>{{ $room->rate }}</td>
+		                            <td>{{ $room->description }}</td>
+		                            <td>{!! Html::link("room/$room->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
+		                        </tr>
+		                    @endforeach
+		                    </tbody>
+		                </table>
+		            </div>
 	            </div>
 	        </div>
 	    </div>

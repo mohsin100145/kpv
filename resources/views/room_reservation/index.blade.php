@@ -17,39 +17,41 @@
 	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Room Reservations</b></code></h3>
 	            </div>
 	            <div class="panel-body">
-	                <table id="example" class="table table-striped table-bordered table-hover">
-	                    <thead>
-	                        <tr class="success">
-	                            <th>SL</th>
-	                            <th>Cusromer Id</th>
-	                            <th>Cusromer Id</th>
-	                            <th>Room</th>
-	                            <th>Per Day Rate</th>
-	                            <th>Entry At</th>
-	                            <th>Exit At</th>
-	                            <th>Remarks</th>
-	                            <th>Edit</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                    <?php
-	                        $i = 0;
-	                    ?>
-	                    @foreach($reservations as $reservation)
-	                        <tr>
-	                            <td>{{ ++$i }}</td>
-	                            <td>{{ $reservation->customer_id }}</td>
-	                            <td>{{ $reservation->customer->name }}</td>
-	                            <td>{{ $reservation->room->name }}</td>
-	                            <td>{{ $reservation->room->rate }}</td>
-	                            <td>{{ $reservation->entry_at }}</td>
-	                            <td>{{ $reservation->exit_at }}</td>
-	                            <td>{{ $reservation->remarks }}</td>
-	                            <td>{!! Html::link("room-reservation/$reservation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
-	                        </tr>
-	                    @endforeach
-	                    </tbody>
-	                </table>
+	            	<div class="table-responsive">
+		                <table id="example" class="table table-striped table-bordered table-hover">
+		                    <thead>
+		                        <tr class="success">
+		                            <th>SL</th>
+		                            <th>Cusromer Id</th>
+		                            <th>Cusromer Id</th>
+		                            <th>Room</th>
+		                            <th>Per Day Rate</th>
+		                            <th>Entry At</th>
+		                            <th>Exit At</th>
+		                            <th>Remarks</th>
+		                            <th>Edit</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    <?php
+		                        $i = 0;
+		                    ?>
+		                    @foreach($reservations as $reservation)
+		                        <tr>
+		                            <td>{{ ++$i }}</td>
+		                            <td>{{ $reservation->customer_id }}</td>
+		                            <td>{{ $reservation->customer->name }}</td>
+		                            <td>{{ $reservation->room->name }}</td>
+		                            <td>{{ $reservation->room->rate }}</td>
+		                            <td>{{ $reservation->entry_at }}</td>
+		                            <td>{{ $reservation->exit_at }}</td>
+		                            <td>{{ $reservation->remarks }}</td>
+		                            <td>{!! Html::link("room-reservation/$reservation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
+		                        </tr>
+		                    @endforeach
+		                    </tbody>
+		                </table>
+		            </div>
 	            </div>
 	        </div>
 	    </div>

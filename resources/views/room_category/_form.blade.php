@@ -8,7 +8,7 @@
     {!! Form::label('name', 'Room Category Name', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('name', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Room Category Name', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter Room Category Name', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('name') }}
 		    </span>
