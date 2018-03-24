@@ -22,13 +22,16 @@
 		                    <thead>
 		                        <tr class="success">
 		                            <th>SL</th>
+		                            <th>Rsv ID</th>
 		                            <th>Cusromer Id</th>
-		                            <th>Cusromer Id</th>
+		                            <th>Cusromer Name</th>
 		                            <th>Room</th>
 		                            <th>Per Day Rate</th>
 		                            <th>Entry At</th>
 		                            <th>Exit At</th>
 		                            <th>Remarks</th>
+		                            <th>Status</th>
+		                            <th>Change Status</th>
 		                            <th>Edit</th>
 		                        </tr>
 		                    </thead>
@@ -39,6 +42,7 @@
 		                    @foreach($reservations as $reservation)
 		                        <tr>
 		                            <td>{{ ++$i }}</td>
+		                            <td>{{ $reservation->id }}</td>
 		                            <td>{{ $reservation->customer_id }}</td>
 		                            <td>{{ $reservation->customer->name }}</td>
 		                            <td>{{ $reservation->room->name }}</td>
@@ -46,6 +50,8 @@
 		                            <td>{{ $reservation->entry_at }}</td>
 		                            <td>{{ $reservation->exit_at }}</td>
 		                            <td>{{ $reservation->remarks }}</td>
+		                            <td>{{ $reservation->status }}</td>
+		                            <td>{!! Html::link("room-reservation/$reservation->id/change-status",' Change', ['class' => 'fa fa-edit btn btn-danger btn-xs']) !!}</td>  
 		                            <td>{!! Html::link("room-reservation/$reservation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
 		                        </tr>
 		                    @endforeach

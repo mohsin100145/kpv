@@ -17,6 +17,7 @@ class CreateRoomReservationsTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->integer('room_id')->unsigned();
+            $table->string('status', 50);
             $table->timestamp('entry_at');
             $table->timestamp('exit_at')->nullable();
             $table->string('remarks')->nullable();

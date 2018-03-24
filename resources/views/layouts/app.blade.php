@@ -70,6 +70,9 @@
                             <li {{ ( Request::is('user') || Request::is('user/*') ? 'class=active' : '' ) }}>
                                 <a href="{{ url('user') }}">User</a>
                             </li>
+                            <li {{ ( Request::is('report') || Request::is('report/*') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('report/payable-by-customer-form') }}">Report</a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

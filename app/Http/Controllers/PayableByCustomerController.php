@@ -25,25 +25,24 @@ class PayableByCustomerController extends Controller
     public function create()
     {
         //$roomReservationList = RoomReservation::pluck('id', 'id');
-    	$roomReservations = RoomReservation::with(['room', 'customer'])->get();
+    	$roomReservations = RoomReservation::with(['room', 'customer'])->where('status', 'New')->get();
         foreach ($roomReservations as  $roomReservation) {
             $roomReservationList[$roomReservation->id] = $roomReservation->customer->mobile_no . ' ' .$roomReservation->customer->name . ' ' .$roomReservation->id . ' ' .$roomReservation->room->name . ' ' .$roomReservation->room->rate . ' (Mobile Name ID Room Rate)';
         }
     	//$roomList = Room::pluck('name', 'id');
+        if (!count($roomReservations)) {
+            flash()->error('There is no New reservation');
+            return redirect()->back();
+        }
     	return view('payable_by_customer.create', compact('roomReservationList'));
     }
 
     public function store(Request $request)
     {
         //return $request->all();
-        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
-            flash()->error('Wrong Input, Please Check!');
-            return redirect()->back()->withInput();
-        }
-
     	$input = Input::all();
 	    $rules = [
-	    	'reservation_id' => 'required',
+	    	'reservation_id' => 'required|unique:payable_by_customers',
 	    	'day' => 'required|numeric',
             'per_day_discount' => 'required|numeric',
             'overall_discount' => 'required|numeric',
@@ -53,7 +52,10 @@ class PayableByCustomerController extends Controller
             'due' => 'required|numeric'
 	    ];
 
-	    $messages = [];
+	    $messages = [
+            'reservation_id.required' => 'The Select Room Reservation field is required.',
+            'reservation_id.unique' => 'The Select Room Reservation already exist. You have to Edit'
+        ];
 	    
     	$validator = Validator::make($input, $rules, $messages);
 
@@ -62,6 +64,17 @@ class PayableByCustomerController extends Controller
             return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
+        }
+
+        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
+            flash()->error('Wrong Input, Please Check!');
+            return redirect()->back()->withInput();
+        }
+
+        $reservationFirst = PayableByCustomer::where('reservation_id', $request->reservation_id)->first();
+        if ($reservationFirst)  {
+            flash()->error('This Reservation ID already used. You have to Edit according to the Reservation ID.');
+            return redirect()->back()->withInput();
         }
 
         $payableByCustomer = new PayableByCustomer;
@@ -86,23 +99,28 @@ class PayableByCustomerController extends Controller
     {
     	$payableByCustomer = PayableByCustomer::find($id);
     	//$roomReservationList = RoomReservation::pluck('id', 'id');
-        $roomReservations = RoomReservation::with(['room', 'customer'])->get();
+        $roomReservations = RoomReservation::with(['room', 'customer'])->whereIn('status', ['New', 'Pending'])->get();
         foreach ($roomReservations as  $roomReservation) {
             $roomReservationList[$roomReservation->id] = $roomReservation->customer->mobile_no . ' ' .$roomReservation->customer->name . ' ' .$roomReservation->id . ' ' .$roomReservation->room->name . ' ' .$roomReservation->room->rate . ' (Mobile Name ID Room Rate)';
         }
+
+        if (!count($roomReservations)) {
+            flash()->error('There is no New and Pending reservation');
+            return redirect()->back();
+        }
+
     	return view('payable_by_customer.edit', compact('roomReservationList', 'payableByCustomer'));
     }
 
     public function update(Request $request, $id)
     {
-        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
-            flash()->error('Wrong Input, Please Check!');
-            return redirect()->back()->withInput();
-        }
+        
+
+        $payableByCustomer = PayableByCustomer::find($id);
         
     	$input = Input::all();
 	    $rules = [
-	    	'reservation_id' => 'required',
+	    	'reservation_id' => 'required|unique:payable_by_customers,reservation_id,'.$payableByCustomer->id,
             'day' => 'required|numeric',
             'per_day_discount' => 'required|numeric',
             'overall_discount' => 'required|numeric',
@@ -112,7 +130,10 @@ class PayableByCustomerController extends Controller
 	    	'due' => 'required|numeric'
 	    ];
 
-	    $messages = [];
+	    $messages = [
+            'reservation_id.required' => 'The Select Room Reservation field is required.',
+            'reservation_id.unique' => 'The Select Room Reservation already exist. You have to Edit'
+        ];
 	    
     	$validator = Validator::make($input, $rules, $messages);
 
@@ -123,7 +144,11 @@ class PayableByCustomerController extends Controller
                         ->withInput();
         }
 
-        $payableByCustomer = PayableByCustomer::find($id);
+        if ( ($request->per_day_discount == 'NaN') || ($request->overall_discount == 'NaN') || ($request->vat == 'NaN') || ($request->other_charge == 'NaN') || ($request->pay_to_hotel == 'NaN') || ($request->due == 'NaN') ) {
+            flash()->error('Wrong Input, Please Check!');
+            return redirect()->back()->withInput();
+        }
+        
         $payableByCustomer->reservation_id = $request->reservation_id;
         $payableByCustomer->day = $request->day;
         $payableByCustomer->per_day_discount = $request->per_day_discount;

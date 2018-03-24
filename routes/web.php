@@ -40,6 +40,9 @@ Route::post('/customer', 'CustomerController@store');
 Route::get('/customer/{id}/edit', 'CustomerController@edit');
 Route::put('/customer/{id}', 'CustomerController@update');
 
+Route::get('/room-reservation/{id}/change-status', 'RoomReservationController@changeStatus');
+Route::put('/room-reservation/{id}/update-status', 'RoomReservationController@updateStatus');
+
 Route::get('/room-reservation', 'RoomReservationController@index');
 Route::get('/room-reservation/create', 'RoomReservationController@create');
 Route::post('/room-reservation', 'RoomReservationController@store');
@@ -59,3 +62,6 @@ Route::get('/receivable-by-hotel/create', 'ReceivableByHotelController@create');
 Route::post('/receivable-by-hotel', 'ReceivableByHotelController@store');
 Route::get('/receivable-by-hotel/{id}/edit', 'ReceivableByHotelController@edit');
 Route::put('/receivable-by-hotel/{id}', 'ReceivableByHotelController@update');
+
+Route::get('/report/payable-by-customer-form', 'ReportPayableByCustomerController@index');
+Route::post('/report/payable-by-customer-show', 'ReportPayableByCustomerController@showReport');

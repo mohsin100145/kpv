@@ -61,10 +61,11 @@ class RoomReservationController extends Controller
         $reservation->entry_at = $request->entry_at;
         $reservation->exit_at = $request->exit_at;
         $reservation->remarks = $request->remarks;
+        $reservation->status = 'New';
         $reservation->created_by = Auth::id();
         $reservation->save();
 
-        flash()->success(' Room Reservation Successfully Created');
+        flash()->success(' Room Reservation Created Successfully');
     	return redirect('room-reservation');
     }
 
@@ -104,7 +105,7 @@ class RoomReservationController extends Controller
         $reservation->updated_by = Auth::id();
         $reservation->save();
 
-        flash()->success(' Room Successfully Updated');
+        flash()->success(' Room Reservation Updated Successfully');
     	return redirect('room-reservation');
     }
 
@@ -112,5 +113,39 @@ class RoomReservationController extends Controller
     {
         $room = Room::find($request->room_id);
         return view('room_reservation.room_info', compact('room'));
+    }
+
+    public function changeStatus($id)
+    {
+        //return $id;
+        $reservation = RoomReservation::find($id);
+        
+        return view('room_reservation.change_status', compact('reservation'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $input = Input::all();
+        $rules = [
+            'status' => 'required'
+        ];
+
+        $messages = [];
+        
+        $validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            flash()->error('Something Wrong!');
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $reservation = RoomReservation::find($id);
+        $reservation->status = $request->status;
+        $reservation->updated_by = Auth::id();
+        $reservation->save();
+
+        flash()->success(' Status Updated Successfully');
+        return redirect('room-reservation');
     }
 }

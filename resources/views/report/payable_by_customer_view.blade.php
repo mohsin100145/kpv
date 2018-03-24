@@ -4,17 +4,10 @@
 <div class="container">
 	<div class="row">
 	    <div class="col-sm-12">
-	        <h3 style="margin-top: 0px;">
-	            <i class="fa fa-list-ul"></i>
-	            List of <mark>Payable By Customers</mark>
-
-	            <a href="{{ url('payable-by-customer/create') }}" class="btn btn-primary pull-right">
-	                <i class="fa fa-plus"></i> Create <code><b>Payable By Customer</b></code>
-	            </a>
-	        </h3>
-	        <div class="panel panel-danger">
+	        
+	        <div class="panel panel-primary">
 	            <div class="panel-heading">
-	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> List of <code><b>Payable By Customers</b></code></h3>
+	                <h3 class="panel-title text-center"><i class="fa fa-list-ul"></i> Customer Payed List <code><b>{{ $startDate }}</b> to <b>{{ $endDate }}</b></code></h3>
 	            </div>
 	            <div class="panel-body">
 	            	<div class="table-responsive">
@@ -22,7 +15,7 @@
 		                    <thead>
 		                        <tr class="success">
 		                            <th>SL</th>
-		                            <th>Rsv Id</th>
+		                            <th>Id</th>
 		                            <th>Customer</th>
 		                            <th>Day</th>
 		                            <th>Per Day Discount</th>
@@ -33,7 +26,6 @@
 		                            <th>Due</th>
 		                            <th>Remarks</th>
 		                            <th>Date</th>
-		                            <th>Edit</th>
 		                        </tr>
 		                    </thead>
 		                    <tbody>
@@ -56,8 +48,7 @@
 		                            <td class="text-right">{{ number_format($payable->pay_to_hotel, 2) }}</td>
 		                            <td class="text-right">{{ number_format($payable->due, 2) }}</td>
 		                            <td>{{ $payable->remarks }}</td>
-		                            <td>{{ $payable->created_at }}</td>
-		                            <td>{!! Html::link("payable-by-customer/$payable->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
+		                            <td>{{ $payable->created_at }}</td>  
 		                        </tr>
 		                        <?php
 		                    		$payToHotelTotal += $payable->pay_to_hotel;
@@ -70,7 +61,7 @@
 		                    		<th colspan="8" class="text-right">Total</th>
 		                    		<th class="text-right">{{ number_format($payToHotelTotal, 2) }}</th>
 		                    		<th class="text-right">{{ number_format($due, 2) }}</th>
-		                    		<th colspan="3"></th>
+		                    		<th colspan="2"></th>
 		                    	</tr>
 		                    </tfoot>
 		                </table>
