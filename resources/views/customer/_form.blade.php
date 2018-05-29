@@ -32,7 +32,7 @@
     {!! Form::label('address', 'Address', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('address', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Address of Customer', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter Address of Customer', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('address') }}
 		    </span>
@@ -44,7 +44,7 @@
     {!! Form::label('age', 'Age of Customer', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('age', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Age of Customer', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
+	        {!! Form::text('age', null, ['class' => 'form-control', 'placeholder' => 'Enter Age of Customer', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('age') }}
 		    </span>
@@ -56,7 +56,7 @@
     {!! Form::label('nid_no', 'NID No', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('nid_no', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter NID No of Customer', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
+	        {!! Form::text('nid_no', null, ['class' => 'form-control', 'placeholder' => 'Enter NID No of Customer', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('nid_no') }}
 		    </span>
@@ -68,7 +68,7 @@
     {!! Form::label('email', 'Email', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::text('email', null, ['class' => 'form-control numeric-field', 'placeholder' => 'Enter Email of Customer', 'autocomplete' => 'off']) !!}
+	        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter Email of Customer', 'autocomplete' => 'off']) !!}
 	        <span class="text-danger">
 			    {{ $errors->first('email') }}
 		    </span>
