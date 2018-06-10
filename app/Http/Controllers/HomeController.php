@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RoomCategory;
+use App\Models\Room;
+use App\Models\Customer;
+use App\Models\RoomReservation;
+use App\Models\PayableByCustomer;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $roomCategoryCount = RoomCategory::count();
+        $roomCount = Room::count();
+        $customerCount = Customer::count();
+        $roomReservationCount = RoomReservation::count();
+        $payableByCustomerCount = PayableByCustomer::count();
+        return view('home', compact('roomCategoryCount', 'roomCount', 'customerCount', 'roomReservationCount', 'payableByCustomerCount'));
     }
 }
