@@ -21,14 +21,14 @@
                     <div class="container1">
                         <div id="carousel">
                             <figure><img src="{{ asset('assets/images/rotate_img1.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img2.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img3.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img4.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img5.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img6.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img7.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img8.jpg') }}" alt=""></figure>
-                            <figure><img src="{{ asset('assets/images/rotate_img9.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img02.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img03.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img04.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img05.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img06.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img07.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img08.jpg') }}" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/rotate_img09.jpg') }}" alt=""></figure>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                                       <div class="tab-featured-image">
                                           <div class="tab-content">
                                               <div class="tab-pane  in active" id="tab1">
-                                                      <img src="{{ asset('assets/images/Grand-Beach-Hotel.jpg') }}" alt="tab1" class="img img-responsive">
+                                                      <img src="{{ asset('assets/images/Grand-Beach-Hotel0.jpg') }}" alt="tab1" class="img img-responsive">
                                               </div>
                                               <div class="tab-pane " id="tab2">
                                                   
@@ -135,8 +135,8 @@
                           <div class="circle-tile ">
                             <div class="circle-tile-heading green"><i class="fa fa-bar-chart fa-fw fa-3x"></i></div>
                             <div class="circle-tile-content green">
-                                <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Room </h3> </div>
-                                <div class="circle-tile-number text-faded" id="new_total">9</div>
+                                <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Room Category </h3> </div>
+                                <div class="circle-tile-number text-faded" id="new_total">{{ $roomCategoryCount }}</div>
                                 
                             </div>
                           </div>
@@ -147,7 +147,7 @@
                             <div class="circle-tile-heading green"><i class="fa fa-outdent fa-fw fa-3x"></i></div>
                             <div class="circle-tile-content green">
                                   <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0px; margin-bottom: 0px;"> Room </h3> </div>
-                                  <div class="circle-tile-number text-faded" id="pending_total">8</div>
+                                  <div class="circle-tile-number text-faded" id="pending_total">{{ $roomCount }}</div>
                                   
                               </div>
                             </div>
@@ -157,8 +157,8 @@
                           <div class="circle-tile ">
                             <div class="circle-tile-heading green"><i class="fa fa-calendar fa-fw fa-3x"></i></div>
                                 <div class="circle-tile-content green">
-                                  <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Room </h3></div>
-                                  <div class="circle-tile-number text-faded" id="answered_total">7</div>
+                                  <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Customer </h3></div>
+                                  <div class="circle-tile-number text-faded" id="answered_total">{{ $customerCount }}</div>
                                   
                               </div>
                           </div>
@@ -168,8 +168,8 @@
                           <div class="circle-tile ">
                             <div class="circle-tile-heading green"><i class="fa fa-files-o fa-fw fa-3x"></i></div>
                             <div class="circle-tile-content green">
-                                <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Room </h3> </div>
-                                <div class="circle-tile-number text-faded" id="new_total">6</div>
+                                <div class="circle-tile-description text-faded"> <h3 style="margin-top: 0; margin-bottom: 0;"> Room Reservation </h3> </div>
+                                <div class="circle-tile-number text-faded" id="new_total">{{ $roomReservationCount }}</div>
                                 
                             </div>
                           </div>
@@ -187,8 +187,8 @@
                                 <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text" style="font-size: 18px;">Room</span>
-                                    <span class="info-box-number" style="font-size: 33px;">11</span>
+                                    <span class="info-box-text" style="font-size: 18px;">Payable by Customer</span>
+                                    <span class="info-box-number" style="font-size: 33px;">{{ $payableByCustomerCount }}</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
