@@ -57,7 +57,7 @@
                                 @if (Route::has('login'))
 				                    @if (Auth::check())
 				                        <a href="{!! url('/home') !!}" class="btn btn-default" data-animation="animated fadeInLeft">Home</a>
-                                		<a href="{!! url('/result') !!}" class="btn btn-primary" data-animation="animated fadeInRight">result</a>
+                                		<a href="{!! url('/payable-by-customer') !!}" class="btn btn-primary" data-animation="animated fadeInRight">payable by customer</a>
 				                    @else
 				                        <a href="{!! url('/login') !!}" class="btn btn-default" data-animation="animated fadeInLeft">Click Here To Log In</a>
                                 		<a href="#" class="btn btn-primary" data-animation="animated fadeInRight">registration</a>
@@ -82,7 +82,7 @@
                         @if (Route::has('login'))
 		                    @if (Auth::check())
 		                        <a href="{!! url('/home') !!}" class="btn btn-default" data-animation="animated fadeInUp">home</a>
-                        		<a href="{!! url('/result') !!}" class="btn btn-primary" data-animation="animated fadeInDown">result</a>
+                        		<a href="{!! url('/room-reservation') !!}" class="btn btn-primary" data-animation="animated fadeInDown">room reservation</a>
 		                    @else
 		                        <a href="{!! url('/login') !!}" class="btn btn-default" data-animation="animated fadeInUp">click here to log in</a>
                         		<a href="#" class="btn btn-primary" data-animation="animated fadeInDown">registration</a>
@@ -105,7 +105,7 @@
                         @if (Route::has('login'))
 		                    @if (Auth::check())
 		                        <a href="{!! url('/home') !!}" class="btn btn-default" data-animation="animated fadeInLeft">home</a>
-                        		<a href="{!! url('/result') !!}" class="btn btn-primary" data-animation="animated fadeInRight">result</a>
+                        		<a href="{!! url('/customer') !!}" class="btn btn-primary" data-animation="animated fadeInRight">customer</a>
 		                    @else
 		                        <a href="{!! url('/login') !!}" class="btn btn-default" data-animation="animated fadeInLeft">click here to log in</a>
                         		<a href="#" class="btn btn-primary" data-animation="animated fadeInRight">registration</a>

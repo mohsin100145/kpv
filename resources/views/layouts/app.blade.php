@@ -50,8 +50,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
+                            <li {{ ( Request::is('home') ? 'class=active' : '' ) }}>
+                                <a href="{{ url('home') }}">Home</a>
+                            </li>
                             <li {{ ( Request::is('room-category') || Request::is('room-category/*') ? 'class=active' : '' ) }}>
                                 <a href="{{ url('room-category') }}">Room Category</a>
                             </li>
