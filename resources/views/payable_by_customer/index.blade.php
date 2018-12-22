@@ -34,6 +34,7 @@
 		                            <th>Remarks</th>
 		                            <th>Date</th>
 		                            <th>Edit</th>
+		                            <th>Print</th>
 		                        </tr>
 		                    </thead>
 		                    <tbody>
@@ -58,6 +59,7 @@
 		                            <td>{{ $payable->remarks }}</td>
 		                            <td>{{ $payable->created_at }}</td>
 		                            <td>{!! Html::link("payable-by-customer/$payable->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-primary btn-xs']) !!}</td>  
+		                            <td>{!! Html::link("payable-by-customer/$payable->id",' Print', ['class' => 'fa fa-edit btn btn-success btn-xs']) !!}</td>  
 		                        </tr>
 		                        <?php
 		                    		$payToHotelTotal += $payable->pay_to_hotel;
@@ -70,7 +72,7 @@
 		                    		<th colspan="8" class="text-right">Total</th>
 		                    		<th class="text-right">{{ number_format($payToHotelTotal, 2) }}</th>
 		                    		<th class="text-right">{{ number_format($due, 2) }}</th>
-		                    		<th colspan="3"></th>
+		                    		<th colspan="4"></th>
 		                    	</tr>
 		                    </tfoot>
 		                </table>

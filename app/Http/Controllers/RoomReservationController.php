@@ -25,7 +25,11 @@ class RoomReservationController extends Controller
 
     public function create()
     {
-    	$customerList = Customer::pluck('name', 'id');
+    	//$customerList = Customer::pluck('name', 'id');
+        $customers = Customer::OrderBy('id', 'desc')->get();
+        foreach ($customers as  $customer) {
+            $customerList[$customer->id] = $customer->mobile_no . ' ' .$customer->name . ' ' .$customer->id . ' (Mobile Name ID)';
+        }
     	$roomList = Room::pluck('name', 'id');
     	return view('room_reservation.create', compact('customerList', 'roomList'));
     }

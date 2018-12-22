@@ -171,4 +171,11 @@ class PayableByCustomerController extends Controller
         $reservation = RoomReservation::with(['room', 'customer'])->find($request->reservation_id);
         return view('payable_by_customer.reservation_info', compact('reservation'));
     }
+
+    public function show($id)
+    {
+        $payableByCustomer = PayableByCustomer::with(['reservation', 'reservation.customer', 'reservation.room'])->find($id);
+
+        return view('payable_by_customer.show', compact('payableByCustomer'));
+    }
 }

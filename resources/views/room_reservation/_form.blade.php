@@ -7,7 +7,7 @@
     {!! Form::label('customer_id', 'Select Customer', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::select('customer_id', $customerList, null, ['class' => 'form-control', 'placeholder' => 'Select Customer']) !!}
+	        {!! Form::select('customer_id', $customerList, null, ['class' => 'form-control js-example-basic-single', 'placeholder' => 'Select Customer']) !!}
 	        <span class="text-danger">
 	            {{ $errors->first('customer_id') }}
 	        </span>
@@ -19,7 +19,7 @@
     {!! Form::label('room_id', 'Select Room', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
     <div class="col-xs-9 col-sm-9">
     	<div class="col-xs-12 col-sm-12">
-	        {!! Form::select('room_id', $roomList, null, ['class' => 'form-control', 'placeholder' => 'Select Room', 'id' => 'room_id']) !!}
+	        {!! Form::select('room_id', $roomList, null, ['class' => 'form-control js-example-basic-single', 'placeholder' => 'Select Room', 'id' => 'room_id']) !!}
 	        <span class="text-danger">
 	            {{ $errors->first('room_id') }}
 	        </span>

@@ -134,15 +134,6 @@
 
 @section('script')
 <script type="text/javascript">
-
-    @if(isset($payableByCustomer))   
-        var reservationId = '{{ $payableByCustomer->id }}';
-        var url = '{{ url("/payable-by-customer/reservation-info-show")}}';
-        $.get(url+'?reservation_id='+reservationId, function (data) {
-            $('#reservation_info_show').html(data);
-        });
-    @endif
-
     $(document).ready(function(){
         $("#reservation_id").change(function(){
             //alert("The text has been changed.");

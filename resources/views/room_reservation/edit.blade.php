@@ -2,6 +2,7 @@
 
 @section('style')
 	<link href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/select2-4.0.6.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -68,5 +69,12 @@
 		maxView: 1,
 		forceParse: 0
     });
+</script>
+
+<script src="{{ asset('assets/js/select2-4.0.6.min.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$('.js-example-basic-single').select2();
+	});
 </script>
 @endsection
