@@ -8,6 +8,7 @@ use App\Models\RoomReservation;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PayableByCustomerController extends Controller
 {
@@ -174,8 +175,32 @@ class PayableByCustomerController extends Controller
 
     public function show($id)
     {
-        $payableByCustomer = PayableByCustomer::with(['reservation', 'reservation.customer', 'reservation.room'])->find($id);
+        $payableByCustomer = PayableByCustomer::with(['reservation', 'reservation.customer', 'reservation.room', 'createdBy', 'updatedBy'])->find($id);
 
         return view('payable_by_customer.show', compact('payableByCustomer'));
     }
+
+    public function downloadExcel()
+    {
+        Excel::create('FreeGift'.date('YmdHis'), function($excel) {
+
+            $excel->sheet('Sheet1', function($sheet) {
+
+                $freeGifts = PayableByCustomer::get();
+
+                $arr =array();
+                foreach($freeGifts as $freeGift) {
+                    $data =  array($freeGift->id, $freeGift->reservation_id, $freeGift->day, $freeGift->per_day_discount, $freeGift->overall_discount, $freeGift->pay_to_hotel);
+                    
+                    array_push($arr, $data);
+                }
+                
+                $sheet->fromArray($arr,null,'A1',false,false)->prependRow(array(
+                        'ID', 'reservation_id', 'day', 'per_day_discount', 'overall_discount', 'pay_to_hotel'
+                    )
+                );
+            });
+        })->export('xlsx');
+    }
+
 }

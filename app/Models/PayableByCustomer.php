@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class PayableByCustomer extends Model
 {
@@ -11,5 +12,15 @@ class PayableByCustomer extends Model
     public function reservation()
     {
     	return $this->belongsTo(RoomReservation::class, 'reservation_id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

@@ -122,18 +122,22 @@
 	        </div>
 	        <div>
 	        	<div class="col-xs-12">
-	                <table class="table table-condensed">
+	                <table class="table table-condensed" style="margin-bottom: 0px;">
 	                	<tr>
-	                        <td style="border: 0;">Created By: <strong>{{ $payableByCustomer->created_by }}</strong></td>
-	                        <td style="border: 0;">Updated By: <strong>{{ $payableByCustomer->updated_by }}</strong></td>
+	                        <td style="border: 0;">Created By: <strong>{{ $payableByCustomer->createdBy->name }}</strong></td>
+	                        @if(isset($payableByCustomer->updatedBy->name))
+                                <td style="border: 0;">Updated By: <strong>{{ $payableByCustomer->updatedBy->name }}</strong></td>
+                            @else
+                                <td></td>
+                            @endif
 	                    </tr>
 	                </table>
 	            </div>
 	        </div>
     
 		</div>
-		<p class="text-center">In word: <b>{{ convert_number_to_words($payableByCustomer->pay_to_hotel) }} Taka Only</b></p>
-		<p class="text-center">&copy; {{ date('Y') }}, Software Developed by <strong>Mohsin Iqbal</strong></p>
+		<p class="text-center" style="margin: 0 0 0px;">In word: <b>{{ convert_number_to_words($payableByCustomer->pay_to_hotel) }} Taka Only</b></p>
+		<p class="text-center" style="margin: 0 0 0px;">&copy; {{ date('Y') }}, Software Developed by <strong>Mohsin Iqbal</strong></p>
     	<input type="button" class="no-print btn btn-primary" value="Print this page" onClick="window.print()">
 	</div>	
 </div>	
